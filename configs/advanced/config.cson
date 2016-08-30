@@ -1,0 +1,43 @@
+title: "Advanced Configuration"
+type: "object"
+properties:
+  required: [
+    "groupNumber"
+    "apiUsername"
+  ]
+  options:
+    title: "Options"
+    type: "object"
+    properties:
+      groupNumber:
+        title: "group Number"
+        type: "integer"
+        default: 0
+        minimum: 0
+      ipAddress:
+        title: "Bridge IP Address"
+        type: "string"
+      apiUsername:
+        title: "API Username"
+        type: "string"
+        default: "newdeveloper"
+  desiredState:
+    title: "Desired State"
+    type: "object"
+    properties:
+      color:
+        title: "Color"
+        type: "string"
+      on:
+        title: "group On"
+        type: "boolean"
+      transitiontime:
+        title: "Transition Time (in milliseconds)"
+        type: "integer"
+        minimum: 0
+      alert:
+        title: "Alert Effect"
+        type: "string"
+      effect:
+        title: "Dynamic Effect"
+        type: "string"

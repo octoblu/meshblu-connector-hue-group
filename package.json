@@ -1,0 +1,56 @@
+{
+  "name": "meshblu-connector-hue-group",
+  "version": "1.0.0",
+  "description": "Meshblu Connector Hue Group",
+  "homepage": "https://github.com/octoblu/meshblu-connector-hue-group",
+  "bugs": "https://github.com/octoblu/meshblu-connector-hue-group/issues",
+  "author": {
+    "name": "Octoblu",
+    "url": "https://github.com/octoblu"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octoblu/meshblu-connector-hue-group.git"
+  },
+  "scripts": {
+    "start": "meshblu-connector-runner",
+    "test": "mocha",
+    "generate:package": "meshblu-connector-packager",
+    "generate:schema": "meshblu-connector-schema-generator > schemas.json"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coffee-coverage": "^1.0.1",
+    "mocha": "^3.0.2",
+    "segfault-handler": "^1.0.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "debug": "^2.2.0",
+    "fs-cson": "^0.3.2",
+    "hue-util": "^1.5.0",
+    "meshblu-config": "^6.0.0",
+    "meshblu-connector-runner": "^9.1.2",
+    "meshblu-connector-schema-generator": "^2.1.0",
+    "tinycolor2": "^1.4.1"
+  },
+  "meshbluConnector": {
+    "githubSlug": "octoblu/meshblu-connector-hue-group"
+  },
+  "platformDependencies": {
+    "darwin": [],
+    "win32": [],
+    "win64": [],
+    "linux": [],
+    "android": null,
+    "ios": null
+  },
+  "license": "MIT",
+  "keywords": [
+    "meshblu-connector",
+    "gateblu"
+  ]
+}

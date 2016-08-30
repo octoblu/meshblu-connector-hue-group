@@ -29,7 +29,7 @@ describe 'HueManager', ->
 
     describe '->changeGroup', ->
       beforeEach (done) ->
-        @hue.changeGroups = sinon.stub().yields null
+        @hue.changeGroup = sinon.stub().yields null
         data =
           on: true
           alert: 'none'
@@ -38,15 +38,14 @@ describe 'HueManager', ->
           transitionTime: 0
         @sut.changeGroup data, done
 
-      it 'should call changeGroups', ->
+      it 'should call changeGroup', ->
         options =
-           groupNumber: 4
            on: true
            alert: 'none'
            color: 'white'
            effect: 'none'
            transitionTime: 0
-        expect(@hue.changeGroups).to.have.been.calledWith options
+        expect(@hue.changeGroup).to.have.been.calledWith 4, options
 
   context 'on state change', ->
     beforeEach (done) ->
@@ -58,7 +57,7 @@ describe 'HueManager', ->
 
     describe '->changeGroup', ->
       beforeEach (done) ->
-        @hue.changeGroups = sinon.stub().yields null
+        @hue.changeGroup = sinon.stub().yields null
         data =
           on: true
           alert: 'none'
@@ -67,12 +66,11 @@ describe 'HueManager', ->
           transitionTime: 0
         @sut.changeGroup data, done
 
-      it 'should call changeGroups', ->
+      it 'should call changeGroup', ->
         options =
-           groupNumber: 4
            on: true
            alert: 'none'
            color: 'white'
            effect: 'none'
            transitionTime: 0
-        expect(@hue.changeGroups).to.have.been.calledWith options
+        expect(@hue.changeGroup).to.have.been.calledWith 4, options

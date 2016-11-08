@@ -12,7 +12,7 @@ class HueManager extends EventEmitter
     @options ?= {}
     {apiUsername, ipAddress, @groupNumber} = @options
     {username} = @apikey
-    apiUsername ?= 'newdeveloper'
+    apiUsername = 'newdeveloper' if _.isEmpty apiUsername
     @apikey.devicetype = apiUsername
     @hue = new HueUtil apiUsername, ipAddress, username, @_onUsernameChange
     @stateInterval = setInterval @_updateState, 30000
@@ -28,9 +28,12 @@ class HueManager extends EventEmitter
     @apikey.username = username
     @_emit 'change:username', {@apikey}
 
-  _updateState: (update={}, callback=_.noop) =>
+  _updateState: (update={}, callback) =>
+    callback ?= (error) =>
+      @emit 'error', error if error?
+
     @getGroup (error, group) =>
-      return callback() if error?
+      return callback error if error?
       update = _.merge update, group
       @_emit 'update', update
       callback()
@@ -41,14 +44,8 @@ class HueManager extends EventEmitter
       { lights, state } = group
       { bri, sat, hue, alert, effect } = group.action
 
-      bri = (bri / 254) * 100
-      hue = (hue / 254) * 100
-      sat = (sat / 254) * 100
-
-      color = "hsl(" + hue + "%," + sat + "%," + bri + "%)"
-
       return callback null, {
-        color: tinycolor(color).toHex8String()
+        color: @hue.toTinycolor({ bri, sat, hue }).toHex8String()
         alert: alert
         effect: effect
         on: group.action.on

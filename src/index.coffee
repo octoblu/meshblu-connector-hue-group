@@ -10,6 +10,8 @@ class Connector extends EventEmitter
       @emit 'update', data
     @hue.on 'change:username', ({apikey}) =>
       @emit 'update', {apikey}
+    @hue.on 'error', (error) =>
+      @emit 'error', error
 
   isOnline: (callback) =>
     callback null, running: true

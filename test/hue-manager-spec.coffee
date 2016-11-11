@@ -4,6 +4,7 @@ describe 'HueManager', ->
   beforeEach ->
     @sut = new HueManager
     @sut._updateState = sinon.stub().yields null
+    @sut.verify = sinon.stub().yields null
 
   afterEach (done) ->
     @sut.close done

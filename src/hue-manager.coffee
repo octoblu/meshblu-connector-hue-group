@@ -17,6 +17,7 @@ class HueManager extends EventEmitter
     @hue = new HueUtil apiUsername, ipAddress, username, @_onUsernameChange
     @verify (error) =>
       return callback error if error?
+      clearInterval @stateInterval if @stateInterval?
       @stateInterval = setInterval @_updateState, 30000
       @changeGroup desiredState, callback
 
@@ -39,6 +40,8 @@ class HueManager extends EventEmitter
 
     @getGroup (error, group) =>
       return callback error if error?
+      return callback() if _.isEqual group, @previousGroup
+      @previousGroup = group
       update = _.merge update, group
       @_emit 'update', update
       callback()

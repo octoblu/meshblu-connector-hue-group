@@ -1,6 +1,6 @@
 {
   "name": "meshblu-connector-hue-group",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Meshblu Connector Hue Group",
   "homepage": "https://github.com/octoblu/meshblu-connector-hue-group",
   "bugs": "https://github.com/octoblu/meshblu-connector-hue-group/issues",
